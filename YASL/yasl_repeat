@@ -1,0 +1,30 @@
+{	//save N print first string N times and push N on default stack
+	=:1
+	=:2
+	#(=:2 print 2:=)
+	!
+	"\n" print
+	2:!
+	1:=
+} print_n_arg
+
+{
+	1
+	+
+} increment
+
+!!
+#
+2
+<
+? ("Too few argument\n" print 0 exit)
+=:1
+0
+<=
+? ( "Not positive number\n" print 0 exit )
+eval
+1:=
+#
+1
+-
+#(print_n_arg increment)
