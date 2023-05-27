@@ -1,0 +1,45 @@
+#!yasl
+{
+	=:1
+	0 ==
+	? 1 : (
+		1:=
+		1 ==
+		? 1 : (
+			1:=
+			1 -
+			fact
+			1:!
+			1:=
+			*
+		)
+	)
+} fact
+
+!!
+#
+1
+!=
+? ("Too few argument\n" print 1 exit)
+=:1
+"0" != 
+1:=
+0
+==
+&&
+? ("Not positive Number\n" print 1 exit)
+1:=
+0
+<
+? ("Not positive Number\n" print 1 exit)
+1:=
+eval
+=:2
+20
+>
+? ("Overflow\n" print 0 exit) : 2:=
+fact
+=:1
+0 ==
+? "Overflow" : 1:=
+print "\n" print
