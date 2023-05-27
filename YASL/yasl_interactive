@@ -1,0 +1,10 @@
+#!yasl
+1
+@ (
+	read
+	0
+	==
+	? ("\n" print 0 exit)
+	eval
+	1
+)
