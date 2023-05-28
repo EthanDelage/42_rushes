@@ -47,10 +47,6 @@
 } convert_b64_char //Convert b64 char to int value in stack 2
 
 {
-	1
-} convert_to_rgb
-
-{
 	"\e[38;2;":4 4:print
 	4:print //Print red value
 	";":4 print
