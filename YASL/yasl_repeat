@@ -1,6 +1,20 @@
 #!yasl
 
 {
+	[#]
+	0 ==
+	? ("Not positive Number\n" print 1 exit)
+	][
+	#(
+		=:2
+		"0" <
+		2:= "9" >
+		||
+		? ("Not positive Number\n" print 1 exit)
+	)
+} is_valid_number
+
+{
 	=:1
 	=:2
 	#(=:2 print 2:=)
@@ -21,6 +35,8 @@
 <
 ? ("Too few argument\n" print 0 exit)
 =:1
+is_valid_number
+1:=
 0
 <=
 ? ( "Not positive number\n" print 0 exit )
