@@ -1,4 +1,5 @@
 #!yasl
+
 {
 	=:1
 	=:2
@@ -25,6 +26,10 @@
 ? ( "Not positive number\n" print 0 exit )
 1:=
 eval
+=
+=
+# 2 - + >
+? ("Overflow\n" print 0 exit)
 1
 /
 #
