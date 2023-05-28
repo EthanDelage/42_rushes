@@ -1,6 +1,9 @@
 #!yasl
 
 {
+	[#]
+	0 ==
+	? ("Not positive Number\n" print 1 exit)
 	][
 	#(
 		=:2
