@@ -1,31 +1,123 @@
 #!yasl
 
 {
+	=:1 //Copy value
+	1:2 //index
+	1
+	@ (
+		2:= 2:= *
+		= //Duplicate result
+		1:= ==
+		? (2:= 0) : (
+			1:= >
+			? (-1 0) : (
+				1:2
+				2:+:2
+				1
+			)
+		)
+	)
+	2:#!
+	1:#!
+} sqrt
+
+{
 	=:1
 	"A" >=
 	1:= "Z" <=
 	&&
-	? (1:= "A" -) : (
+	? (1:= "A" -:2) : (
 		1:= "a" >=
 		1:= "z" <=
 		&&
-		? (1:= "a" - 26 +) : (
+		? (1:= "a" - 26 +:2) : (
 			1:= "0" >=
 			1:= "9" <=
 			&&
-			? (1:= "0" - 52 +) : (
+			? (1:= "0" - 52 +:2) : (
 				1:= "+" ==
-				? 62 : (
+				? 62:2 : (
 					1:= "/" ==
-					? 63
+					? 63:2
 				)
 			)
 		)
 	)
 	1:!
-} convert_b64_char
+} convert_b64_char //Convert b64 char to int value in stack 2
+
+{
+	1
+} convert_to_rgb
+
+{
+	"\e[38;2;":4 4:print
+	4:print //Print red value
+	";":4 print
+	4:print //Print green value
+	";":4 4:print
+	4:print //Print blue value
+	"m":4 4:print
+	"██":4 4:print //Print square
+} print_color_square
 
 #!
 read
-print
-print
+4 /
+sqrt
+=:9
+!!!
+9:=
+-1 ==
+? ("Not square\n" print 1 exit)
+][
+!
+#
+@ (
+	convert_b64_char
+	convert_b64_char
+	2:2
+	2:!^:2
+	convert_b64_char
+	3:2
+	2:!^:2
+	convert_b64_char
+	4:2
+	2:!^:2
+	
+	//Calculate blue
+	2:=:4
+	2:!
+	2:=:4
+	3:4
+	4:&:4
+	6:4
+	4:<<:4
+	4:+:4
+	
+	//Calculate green
+	2:=:4
+	2:4
+	4:>>:4
+	2:!
+	2:=:4
+	15:4
+	4:&:4
+	4:4
+	4:<<:4
+	4:+:4
+	
+	//Calculate red
+	2:=:4
+	2:!
+	4:4
+	4:>>:4
+	2:=:4
+	2:4
+	4:<<:4
+	4:+:4
+	#
+)
+
+4:(# 3 /):4
+4:#(print_color_square)
