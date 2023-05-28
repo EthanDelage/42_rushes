@@ -61,8 +61,20 @@
 	"██":4 4:print //Print square
 } print_color_square
 
+{
+	""
+	read
+	@ (
+		+
+		read
+	)
+	+
+	][
+} read_file
+
 #!
-read
+read_file
+#
 4 /
 "Image received, nb pixels : " print
 = print
