@@ -64,7 +64,13 @@
 #!
 read
 4 /
+"Image received, nb pixels : " print
+= print
+"\n" print
 sqrt
+"Found square : " print
+= print
+"\n" print
 =:9
 !!!
 9:=
