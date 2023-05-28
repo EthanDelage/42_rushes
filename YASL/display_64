@@ -120,4 +120,10 @@ sqrt
 )
 
 4:(# 3 /):4
-4:#(print_color_square)
+9:=:4
+4:/:4
+4:#(
+	9:=:4
+	#(print_color_square)
+	"\n":4 4:print
+)
