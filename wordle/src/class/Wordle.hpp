@@ -19,7 +19,10 @@
 # define MAX_NB_ATTEMPTS	6
 # define GREEN				"\e[0;32m"
 # define YELLOW				"\e[0;33m"
+# define GREY				"\e[0;90m"
 # define DEFAULT			"\e[0m"
+
+typedef std::unordered_map<std::string, bool> WordleDictionaryType;
 
 class Wordle {
 
@@ -29,11 +32,11 @@ public:
 	void	play();
 
 private:
-	std::string								_mysteryWord;
-	std::string								_inputtedWords[MAX_NB_ATTEMPTS];
-	std::unordered_map<std::string, bool>	_dictionary;
-	unsigned int							_nbAttempts;
-	unsigned int const						_maxNbAttempts;
+	std::string				_mysteryWord;
+	std::string				_inputtedWords[MAX_NB_ATTEMPTS];
+	WordleDictionaryType	_dictionary;
+	unsigned int			_nbAttempts;
+	unsigned int const		_maxNbAttempts;
 
 	std::string		getMysteryWord();
 	std::string		getInput();

@@ -15,7 +15,7 @@
 #include <fstream>
 #include <algorithm>
 
-static std::unordered_map<std::string, bool>	parseDictionary();
+WordleDictionaryType	parseDictionary();
 
 Wordle::Wordle():
 	_nbAttempts(0),
@@ -30,9 +30,9 @@ Wordle::Wordle():
 	std::cout << "Word to find: " << this->_mysteryWord << std::endl;
 }
 
-static std::unordered_map<std::string, bool>	parseDictionary() {
-	std::unordered_map<std::string, bool>	result;
-	std::ifstream							inputFile(DICTIONARY_FILE);
+WordleDictionaryType	parseDictionary() {
+	WordleDictionaryType	result;
+	std::ifstream			inputFile(DICTIONARY_FILE);
 
 	if (!inputFile.is_open())
 		throw std::runtime_error("Failed to open file " DICTIONARY_FILE);
@@ -61,10 +61,7 @@ void	Wordle::play() {
 		}
 		++_nbAttempts;
 	}
-	if (std::cin.eof())
-		throw std::runtime_error("Standard input has been closed");
-	else
-		std::cout << "Too bad the word to guess was " << _mysteryWord << std::endl;
+	std::cout << "Too bad the word to guess was " << _mysteryWord << std::endl;
 }
 
 std::string		Wordle::getMysteryWord() {
@@ -126,5 +123,5 @@ std::string Wordle::getLetterColor(std::string &word, size_t index) {
 	else if (copyMysteryWord.find(word[index]) != std::string::npos
 		&& word.find(word[index]) == index)
 		return (YELLOW);
-	return (DEFAULT);
+	return (GREY);
 }
