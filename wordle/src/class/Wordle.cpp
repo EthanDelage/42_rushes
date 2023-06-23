@@ -27,7 +27,6 @@ Wordle::Wordle():
 
 	this->_dictionary = parseDictionary();
 	this->_mysteryWord = this->getMysteryWord();
-	std::cout << "Word to find: " << this->_mysteryWord << std::endl;
 }
 
 WordleDictionaryType	parseDictionary() {
