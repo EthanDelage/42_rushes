@@ -15,8 +15,6 @@
 #include <fstream>
 #include <algorithm>
 
-WordleDictionaryType	parseDictionary();
-
 Wordle::Wordle():
 	_nbAttempts(0),
 	_maxNbAttempts(MAX_NB_ATTEMPTS) {
@@ -29,7 +27,7 @@ Wordle::Wordle():
 	this->_mysteryWord = this->getMysteryWord();
 }
 
-WordleDictionaryType	parseDictionary() {
+WordleDictionaryType	Wordle::parseDictionary() {
 	WordleDictionaryType	result;
 	std::ifstream			inputFile(DICTIONARY_FILE);
 
@@ -39,8 +37,12 @@ WordleDictionaryType	parseDictionary() {
 	std::string	line;
 	for (size_t i = 1; std::getline(inputFile, line); i++) {
 		if (line.length() != 5)
-			throw std::runtime_error("Word at line number " + std::to_string(i)
-				+ " is not 5 characters long");
+			throw std::runtime_error("Word at line number "
+				+ std::to_string(i) + " is not 5 characters long");
+		for (int j = 0; j < 5; ++j) {
+			if (!isalpha(line[j]))
+				throw std::runtime_error("A word contains an invalid character");
+		}
 		std::transform(line.begin(), line.end(), line.begin(), ::toupper);
 		result[line] = false;
 	}
@@ -55,7 +57,9 @@ void	Wordle::play() {
 		_inputtedWords[_nbAttempts] = getInput();
 		display();
 		if (_inputtedWords[_nbAttempts] == _mysteryWord) {
-			std::cout << "Congratulations you found the word " << _mysteryWord << " in " << _nbAttempts + 1 << " guesses" << std::endl;
+			std::cout << "Congratulations you found the word "
+				<< _mysteryWord << " in " << _nbAttempts + 1
+				<< (_nbAttempts == 0 ? " guess ": " guesses") << std::endl;
 			return ;
 		}
 		++_nbAttempts;
@@ -79,7 +83,10 @@ std::string Wordle::getInput() {
 		throw std::runtime_error("Failed to read input");
 	std::transform(input.begin(), input.end(), input.begin(), ::toupper);
 	while (!isValidWord(input)) {
-		std::cerr << "Not in word list" << std::endl;
+		if (input.length() != 5)
+			std::cerr << "The word must contain exactly 5 letters" << std::endl;
+		else
+			std::cerr << "Not in word list" << std::endl;
 		std::cout << "Enter a word: ";
 		std::getline(std::cin, input);
 		std::transform(input.begin(), input.end(), input.begin(), ::toupper);

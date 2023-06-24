@@ -15,6 +15,7 @@
 # include <string>
 # include <unordered_map>
 
+//TODO: Core dump when empty dictionary
 # define DICTIONARY_FILE	"./data/words.txt"
 # define MAX_NB_ATTEMPTS	6
 # define GREEN				"\e[0;32m"
@@ -38,12 +39,13 @@ private:
 	unsigned int			_nbAttempts;
 	unsigned int const		_maxNbAttempts;
 
-	std::string		getMysteryWord();
-	std::string		getInput();
-	bool			isValidWord(std::string &word);
-	void			display();
-	void			displayRow(unsigned int rowIndex);
-	std::string		getLetterColor(std::string &word, size_t index);
+	static WordleDictionaryType	parseDictionary();
+	std::string					getMysteryWord();
+	std::string					getInput();
+	bool						isValidWord(std::string &word);
+	void						display();
+	void						displayRow(unsigned int rowIndex);
+	std::string					getLetterColor(std::string &word, size_t index);
 };
 
 #endif
