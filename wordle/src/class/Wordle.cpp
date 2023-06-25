@@ -47,6 +47,8 @@ WordleDictionaryType	Wordle::parseDictionary() {
 		result[line] = false;
 	}
 	inputFile.close();
+	if (result.size() == 0)
+		throw std::runtime_error("The dictionary is empty");
 	return (result);
 }
 

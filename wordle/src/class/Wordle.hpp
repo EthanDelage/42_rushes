@@ -15,7 +15,6 @@
 # include <string>
 # include <unordered_map>
 
-//TODO: Core dump when empty dictionary
 # define DICTIONARY_FILE	"./data/words.txt"
 # define MAX_NB_ATTEMPTS	6
 # define GREEN				"\e[0;32m"
